@@ -24,4 +24,4 @@ services:
     environment:
       - PORT=4000
       - MONGODB_URL=mongodb://mongodb
-    command: "yarn test"
+    command: "yarn test && yarn coverage"
