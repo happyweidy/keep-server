@@ -4,10 +4,15 @@ notifications:
 services:
   - docker
 before_script:
+  - sudo apt-get install zip
   - yarn install
+  - zip -qr keep-server.zip . -x *.git*
 script:
   - docker-compose run webapp_test
 deploy:
   provider: releases
   api_key: ${GITHUB_OAUTH_TOKEN}
   file: 'keep-server.zip'
+  skip_cleanup: true
+  on:
+    tags: true
