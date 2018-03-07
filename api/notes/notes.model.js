@@ -16,14 +16,4 @@ const notesSchema = new Schema({
   },
 });
 
-notesSchema.statics.getAllNotes = async () => {
-  const notes = await this.find({});
-  return notes;
-};
-
-notesSchema.statics.getNoteById = (noteId) => {
-  const note = this.find({ _id: noteId });
-  return note;
-};
-
 module.exports = mongoose.model('note', notesSchema);
