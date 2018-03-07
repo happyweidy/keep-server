@@ -1,4 +1,6 @@
 language: node_js
+node_js:
+  - stable
 notifications:
   slack: theselftalk:EHiDWYYgq34Y172TrHTqA16W
 services:
