@@ -1,0 +1,13 @@
+language: node_js
+notifications:
+  slack: theselftalk:EHiDWYYgq34Y172TrHTqA16W
+services:
+  - docker
+before_script:
+  - yarn install
+script:
+  - docker-compose run webapp_test
+deploy:
+  provider: releases
+  api_key: ${GITHUB_OAUTH_TOKEN}
+  file: 'keep-server.zip'
