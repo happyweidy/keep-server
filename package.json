@@ -6,7 +6,7 @@
   "author": "Nishant Jain",
   "license": "MIT",
   "scripts": {
-    "test": "yarn lint && nyc mocha -t 5000 --recursive test",
+    "test": "yarn lint && nyc mocha -t 5000 --recursive test && nyc report --reporter=text-lcov | coveralls",
     "start": "node bin/www",
     "lint-fix": "./node_modules/.bin/eslint --fix .",
     "lint": "./node_modules/.bin/eslint .",
