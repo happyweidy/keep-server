@@ -10,7 +10,7 @@ before_script:
   - yarn install
   - zip -qr keep-server.zip . -x *.git*
 script:
-  - docker-compose run -e CI=true -e TRAVIS_JOB_ID=$TRAVIS_JOB_ID webapp_test
+  - docker-compose run -e TRAVIS=$TRAVIS -e CI=true -e TRAVIS_JOB_ID=$TRAVIS_JOB_ID webapp_test
 deploy:
   provider: releases
   api_key: ${GITHUB_OAUTH_TOKEN}
