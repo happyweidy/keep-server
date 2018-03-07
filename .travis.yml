@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - stable
+notifications:
+  slack: theselftalk:EHiDWYYgq34Y172TrHTqA16W
+services:
+  - docker
+before_script:
+  - sudo apt-get install zip
+  - yarn install
+  - zip -qr keep-server.zip . -x *.git*
+script:
+  - docker-compose run -e TRAVIS=$TRAVIS -e CI=true -e TRAVIS_JOB_ID=$TRAVIS_JOB_ID webapp_test
+deploy:
+  provider: releases
+  api_key: ${GITHUB_OAUTH_TOKEN}
+  file: 'keep-server.zip'
+  skip_cleanup: true
+  on:
+    tags: true

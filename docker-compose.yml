@@ -1,0 +1,27 @@
+version: "3"
+services:
+  mongodb:
+    hostname: mongodb
+    image: mvertes/alpine-mongo
+    ports:
+      - "29017:27017"
+    restart: always
+  webapp:
+    build:
+      context: .
+    links: 
+      - mongodb
+    environment:
+      - PORT=4000
+      - MONGODB_URL=mongodb
+    ports:
+      - "4000:4000"
+  webapp_test:
+    build:
+      context: .
+    links: 
+      - mongodb
+    environment:
+      - PORT=4000
+      - MONGODB_URL=mongodb://mongodb
+    command: "yarn test"

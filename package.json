@@ -1,0 +1,35 @@
+{
+  "name": "keep-server",
+  "version": "1.0.0",
+  "description": "A keep server to interface notes",
+  "main": "index.js",
+  "author": "Nishant Jain",
+  "license": "MIT",
+  "scripts": {
+    "test": "yarn lint && nyc mocha -t 5000 --recursive test && nyc report --reporter=text-lcov | coveralls",
+    "start": "node bin/www",
+    "lint-fix": "./node_modules/.bin/eslint --fix .",
+    "lint": "./node_modules/.bin/eslint .",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "bunyan": "^1.8.12",
+    "bunyan-middleware": "^0.8.0",
+    "express": "^4.16.2",
+    "json-server": "^0.12.1",
+    "mongoose": "^5.0.9"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.0",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "mocha": "^5.0.2",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^11.4.1",
+    "proxyquire": "^2.0.0",
+    "should": "^13.2.1",
+    "supertest": "^3.0.0"
+  }
+}
