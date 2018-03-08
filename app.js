@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const config = require('./config');
 const notes = require('./api/notes');
@@ -7,6 +8,10 @@ const notes = require('./api/notes');
 mongoose.connect(config.mongodb.mongodbUrl);
 
 const app = express();
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
