@@ -29,18 +29,23 @@ describe('Note Routes', () => {
       .expect(200)
       .end((err, res) => {
         should.not.exist(err);
-        should.exist(res);
+        should.exist(res.body);
+        res.body.should.be.an.instanceOf(Array);
+        const [noteSample] = res.body;
+        noteSample.should.have.properties(['title', 'body', 'createdAt', '_id']);
         done();
       });
   });
 
-  it('should be able to a note by id', (done) => {
+  it('should be able to get a note by id', (done) => {
     request(app)
-      .get('/notes/1')
+      .get('/notes/5a9ebdf96162ed55c3072344')
       .expect(200)
       .end((err, res) => {
         should.not.exist(err);
-        should.exist(res);
+        should.exist(res.body);
+        const noteSample = res.body;
+        noteSample.should.have.properties(['title', 'body', 'createdAt', '_id']);
         done();
       });
   });
@@ -56,7 +61,11 @@ describe('Note Routes', () => {
       })
       .end((err, res) => {
         should.not.exist(err);
-        should.exist(res);
+        should.exist(res.body);
+        const noteSample = res.body;
+        noteSample.should.have.properties(['title', 'body', 'createdAt', '_id']);
+        noteSample.title.should.be.exactly('Test Note');
+        noteSample.body.should.be.exactly('Test Note Body');
         done();
       });
   });
