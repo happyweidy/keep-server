@@ -32,7 +32,7 @@ describe('Note Routes', () => {
         should.exist(res.body);
         res.body.should.be.an.instanceOf(Array);
         const [noteSample] = res.body;
-        noteSample.should.have.properties(['title', 'body', 'createdAt', '_id']);
+        noteSample.should.have.only.keys('title', 'body', 'createdAt', '_id');
         done();
       });
   });
@@ -45,7 +45,7 @@ describe('Note Routes', () => {
         should.not.exist(err);
         should.exist(res.body);
         const noteSample = res.body;
-        noteSample.should.have.properties(['title', 'body', 'createdAt', '_id']);
+        noteSample.should.have.only.keys('title', 'body', 'createdAt', '_id');
         done();
       });
   });
@@ -63,8 +63,7 @@ describe('Note Routes', () => {
         should.not.exist(err);
         should.exist(res.body);
         const noteSample = res.body;
-        console.log(res.body);
-        noteSample.should.have.properties(['title', 'body', 'createdAt', '_id']);
+        noteSample.should.have.only.keys('title', 'body', 'createdAt', '_id');
         noteSample.title.should.be.exactly('Test Note');
         noteSample.body.should.be.exactly('Test Note Body');
         done();

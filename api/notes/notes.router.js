@@ -17,7 +17,7 @@ router.get('/:noteId', async (req, res) => {
 router.post('/', async (req, res) => {
   const note = req.body;
   const createdNote = await notesController.createNote(note);
-  res.json(JSON.stringify(createdNote));
+  res.json(createdNote);
 });
 
 module.exports = router;
