@@ -63,6 +63,7 @@ describe('Note Routes', () => {
         should.not.exist(err);
         should.exist(res.body);
         const noteSample = res.body;
+        console.log(res.body);
         noteSample.should.have.properties(['title', 'body', 'createdAt', '_id']);
         noteSample.title.should.be.exactly('Test Note');
         noteSample.body.should.be.exactly('Test Note Body');
