@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/ping', (_, res) => {
-  res.send('pong');
+  res.send('pong1');
 });
 
 app.use('/notes', notes);
